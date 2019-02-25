@@ -21,12 +21,13 @@ io.on('connection', (socket) => {
   socket.broadcast.emit('newMessage',
             generateMessage('ODMEN', 'LOVI NOVOGO MOLODOGO'));
 
-  socket.on('createMessage', (message) => {
+  socket.on('createMessage', (message, callback) => {
     console.log('createMessage', message);
 
     io.emit('newMessage',
               generateMessage(message.from, message.text));
 
+    callback('from server aye');
     // socket.broadcast.emit('newMessage', {
     //   from: message.from,
     //   text: message.text,
