@@ -21,5 +21,5 @@ describe('generateLocationMessage', () => {
     var result = generateLocationMessage(from, lat, lng);
     expect(result).toMatchObject({from, url});
     expect(typeof result.createdAt).toBe('number');
-  })
+  });
 });
