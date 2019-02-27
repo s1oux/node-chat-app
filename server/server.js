@@ -24,6 +24,11 @@ io.on('connection', (socket) => {
       return callback('name and room name are required');
     }
 
+
+    if(users.getUserList(params.room).filter((user) => user === params.name).length > 0) {
+      return callback('you should enter unique name for this room');
+    }
+
     socket.join(params.room);
     users.removeUser(socket.id);
     users.addUser(socket.id, params.name, params.room);
